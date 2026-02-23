@@ -84,11 +84,11 @@ const config: FunnelConfig = {
   method="POST"
 >
   <input name="inf_form_xid" type="hidden" value="8f04d117543e2ecf27d40a3338f87e9d" />
-  <input name="inf_form_name" type="hidden" value="Daily Income Stacking Webinar Registration" />
-  <input name="infusionsoft_version" type="hidden" value="1.70.0.895672" />
+  <input name="inf_form_name" type="hidden" value="Daily Income StackingWebinar Registration" />
+  <input name="infusionsoft_version" type="hidden" value="1.70.0.905221" />
 
   <div class="infusion-field">
-    <label for="inf_field_FirstName">First Name *</label>
+    <label for="inf_field_FirstName">First Name</label>
     <input id="inf_field_FirstName" name="inf_field_FirstName" placeholder="First Name" type="text" required />
   </div>
 
@@ -103,22 +103,22 @@ const config: FunnelConfig = {
   </div>
 
   <div class="infusion-field">
-    <label for="inf_field_Phone1">Mobile Phone</label>
-    <input id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Mobile Phone" type="tel" />
+    <label for="inf_field_Phone1">Phone 1</label>
+    <input id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Phone 1" type="text" />
   </div>
 
   <div class="infusion-field">
     <span class="infusion-checkbox">
       <input
-        id="inf_option_Bychecking"
-        name="inf_option_Bychecking"
+        id="inf_option_BycheckingthisboxIagreetoreceivetextmessagessuchasremindersupdatesandpromotionaloffersfromTheCashFlowAcademyatthemobilenumberprovidedMessageanddataratesmayapplyMessagefrequencyvariesConsentisnotaconditionofpurchaseReplySTOPtounsubscribe"
+        name="inf_option_BycheckingthisboxIagreetoreceivetextmessagessuchasremindersupdatesandpromotionaloffersfromTheCashFlowAcademyatthemobilenumberprovidedMessageanddataratesmayapplyMessagefrequencyvariesConsentisnotaconditionofpurchaseReplySTOPtounsubscribe"
         type="checkbox"
         value="4159"
       />
-      <label for="inf_option_Bychecking">
-        By checking this box, I agree to receive text messages from The Cash Flow Academy
-        at the number provided. Message &amp; data rates may apply. Reply STOP to unsubscribe.
-      </label>
+      <label
+        class="infusion-field-label-container infusion-label-checkbox"
+        for="inf_option_BycheckingthisboxIagreetoreceivetextmessagessuchasremindersupdatesandpromotionaloffersfromTheCashFlowAcademyatthemobilenumberprovidedMessageanddataratesmayapplyMessagefrequencyvariesConsentisnotaconditionofpurchaseReplySTOPtounsubscribe"
+      >By checking this box, I agree to receive text messages (such as reminders, updates and promotional offers) from The Cash Flow Academy at the mobile number provided. Message and data rates may apply. Message frequency varies. Consent is not a condition of purchase. Reply STOP to unsubscribe.</label>
     </span>
   </div>
 
@@ -134,20 +134,20 @@ const config: FunnelConfig = {
 
   <!-- WebinarFuel / session tracking hidden fields -->
   <input name="inf_custom_WebinarFuelWebinarID"  type="hidden" value="null" />
-  <input name="inf_custom_WebinarFuelSessionId" type="hidden" value="null" />
+  <input name="inf_custom_WebinarFuelSessionId"  type="hidden" value="null" />
   <input name="inf_custom_TimeZone"              type="hidden" value="null" />
 
   <!-- Honeypot anti-spam -->
-  <input type="text" name="inf-sbt" style="display:none !important;" tabindex="-1" autocomplete="off" />
+  <input type="text" name="inf-sbt" style="display:none !important;" />
 
   <div class="infusion-submit">
-    <button class="infusion-recaptcha" type="submit">Save My Seat</button>
+    <button type="submit">Save My Seat</button>
   </div>
 </form>
-<script src="https://yv932.infusionsoft.app/app/webTracking/getTrackingCode"></script>
-<script src="https://yv932.infusionsoft.com/app/timezone/timezoneInputJs?xid=8f04d117543e2ecf27d40a3338f87e9d"></script>
-<script src="https://yv932.infusionsoft.com/js/jquery/jquery-3.3.1.js"></script>
-<script src="https://yv932.infusionsoft.app/app/webform/overwriteRefererJs"></script>`,
+<script type="text/javascript" src="https://yv932.infusionsoft.app/app/webTracking/getTrackingCode"></script>
+<script type="text/javascript" src="https://yv932.infusionsoft.com/app/timezone/timezoneInputJs?xid=8f04d117543e2ecf27d40a3338f87e9d"></script>
+<script type="text/javascript" src="https://yv932.infusionsoft.com/js/jquery/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://yv932.infusionsoft.app/app/webform/overwriteRefererJs"></script>`,
 
   // ── Speaker ───────────────────────────────────────────────────────────────
   speaker: {
