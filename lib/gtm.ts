@@ -18,6 +18,7 @@ export type GTMEventName =
   | 'form_view'
   | 'form_start'
   | 'form_submit'
+  | 'registration_complete'
   | 'cta_click'
   | 'scroll_to_form'
   | 'scroll_depth'
@@ -49,6 +50,11 @@ export function pushToDataLayer(payload: GTMBasePayload): void {
  * Builds the inline GTM script string that must be placed in <head>.
  * Used by the GTMScript server component.
  */
+/** Fires when a registrant lands on the confirmation page. */
+export function fireRegistrationComplete(funnelSlug: string): void {
+  pushToDataLayer({ event: 'registration_complete', funnel_slug: funnelSlug });
+}
+
 export function buildGTMHeadScript(containerId: string): string {
   return `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import GTMScript from '@/components/GTMScript';
 import '@/styles/globals.css';
 
+// GTM container ID — override via NEXT_PUBLIC_GTM_ID env var if needed
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? 'GTM-NFS9XPJ';
+
 export const metadata: Metadata = {
   title: {
     default: 'Free Webinar Training',
@@ -20,8 +23,6 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? '';
-
   return (
     <html lang="en">
       <head>
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {gtmId && <GTMScript containerId={gtmId} />}
+        <GTMScript containerId={GTM_ID} />
         {children}
       </body>
     </html>

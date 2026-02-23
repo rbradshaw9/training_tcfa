@@ -4,6 +4,7 @@
 // Renders copyright, footer links, and earnings disclaimer text.
 // ─────────────────────────────────────────────────────────────────────────────
 
+import Link from 'next/link';
 import styles from './PageFooter.module.css';
 
 export interface PageFooterProps {
@@ -28,17 +29,23 @@ export default function PageFooter({
         {/* Links row */}
         {links && links.length > 0 && (
           <nav className={styles.links} aria-label="Footer links">
-            {links.map((link, i) => (
-              <a
-                key={i}
-                href={link.url}
-                className={styles.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link, i) =>
+              link.url.startsWith('/') ? (
+                <Link key={i} href={link.url} className={styles.link}>
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={i}
+                  href={link.url}
+                  className={styles.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
           </nav>
         )}
 

@@ -21,15 +21,14 @@ const config: FunnelConfig = {
     ogTitle: 'FREE Masterclass: Income Stacking with Cash Flow Stocks',
     ogDescription:
       'Join Rich Dad Expert Andy Tanner LIVE and discover how to generate three unique income streams from a single stock — for consistent cash flow that grows and compounds over time.',
-    ogImage: 'https://go.thecashflowacademy.com/og/income-stacking.jpg',
+    ogImage: '/images/andy-with-kiyosaki.png',
     canonicalUrl: 'https://training.thecashflowacademy.com',
     twitterCard: 'summary_large_image',
-    favicon: '/favicon.ico',
+    favicon: '/icon.png',
   },
 
   // ── Google Tag Manager ────────────────────────────────────────────────────
-  // Replace with your actual GTM container ID before going live
-  gtmContainerId: 'GTM-XXXXXXX',
+  gtmContainerId: 'GTM-NFS9XPJ',
 
   // ── Webinar Details ───────────────────────────────────────────────────────
   // dynamic: true  →  CountdownTimer and HeroSection compute the next session
@@ -57,7 +56,7 @@ const config: FunnelConfig = {
     'And So Much More!',
   ],
   heroCtaText: 'CLICK HERE TO REGISTER NOW',
-  heroBackgroundImage: '',
+  heroBackgroundImage: '/images/andy-with-kiyosaki.png',
 
   // ── Registration Form ─────────────────────────────────────────────────────
   formTitle: "DON'T MISS THIS FREE TRAINING",
@@ -154,14 +153,14 @@ const config: FunnelConfig = {
     name: 'Andy Tanner',
     title: 'Noted Author, Speaker, Teacher, and Long-time Rich Dad Expert',
     bio: "With a lifelong passion for Teaching, Investing, Entrepreneurship, and Self Development, Andy Tanner has devoted his career to training and inspiring motivated people all over the world. Andy's passion for helping investors and entrepreneurs shows through in everything he does: The Cash Flow Academy Show podcast, regular investing update videos and commentary, interviews with top experts, and focused training programs. The goal with The Cash Flow Academy is to make everything fun, simple, and real.\n\nAndy is a lifelong teacher and student of investing. His mission: empower and inspire people to discover how to create their own income — showing them what it really takes to become in control and self-sufficient.",
-    headshotUrl: '/images/andy-tanner-headshot.jpg',
+    headshotUrl: '/images/andy-tanner-headshot.png',
     credentials: [
       'Long-time Rich Dad Expert and close collaborator of Robert Kiyosaki',
       'Author of "Stock Market Cash Flow" — a Rich Dad Advisors book',
       'Founder of The Cash Flow Academy — thousands of investors trained worldwide',
       'Creator of the Income Stacking method for generating 3 income streams from a single stock',
     ],
-    companyLogoUrl: '/images/tcfa-logo-white.svg',
+    companyLogoUrl: '/images/rich-dad-expert-logo.png',
     socialProof: 'Thousands of investors trained worldwide',
   },
 
@@ -180,36 +179,42 @@ const config: FunnelConfig = {
   testimonials: [
     {
       name: 'Justin OKeefe',
+      imageUrl: '/images/testimonial-1.jpg',
       quote:
         "Andy's teaching style is fantastic. If you don't understand the first time he will explain it — his talent for describing and personalizing concepts, and drawing fantastic diagrams that help explain any idea, really helps. With Andy you will definitely be able to learn to invest for cash flow with confidence.",
       stars: 5,
     },
     {
       name: 'David Corley',
+      imageUrl: '/images/testimonial-2.jpg',
       quote:
         'Andy makes things very simple to understand. This is a pretty complicated subject but I got the basics easily through his teaching style very early in the classes. I know that I will get out of the rat race and have financial freedom!',
       stars: 5,
     },
     {
       name: 'Guy Pierce',
+      imageUrl: '/images/testimonial-3.jpg',
       quote:
         "Andy's teaching style was perfect for a beginner like me to trading in the stock market. I can't believe how simple the process has become in just 30 days! I am placing trades and getting cash flow immediately and with Andy's training (and his awesome team) I am able to keep that cash repeatedly.",
       stars: 5,
     },
     {
       name: 'Michael Tollen',
+      imageUrl: '/images/testimonial-4.jpg',
       quote:
         "Andy's teaching style is clear, and he repeats the more complex concepts so that all understand them. It gives me confidence to buy & sell options. I won't need to put up so much capital to invest, and my risk can be controlled.",
       stars: 5,
     },
     {
       name: 'Carlos Azuero',
+      imageUrl: '/images/testimonial-5.jpg',
       quote:
         'Andy opened my eyes to a new world of possibilities. I realized that this is true — you can have control on the investment in this market with cash flow, something that I did not know could be possible.',
       stars: 5,
     },
     {
       name: 'Fortuna Gyeltsen',
+      imageUrl: '/images/testimonial-6.jpg',
       quote:
         'The training has improved my life in the short term by illuminating an accessible investment technique that allows control and risk management in a liquid market. I can sleep better at night knowing that I do not have to fall at the mercy of the market\'s ups and downs, but can position my investments accordingly.',
       stars: 5,
@@ -251,12 +256,12 @@ const config: FunnelConfig = {
   },
 
   // ── Footer ────────────────────────────────────────────────────────────────
-  footerCopyright: `© ${new Date().getFullYear()} The Cash Flow Academy. All Rights Reserved.`,
+  footerCopyright: `© ${new Date().getFullYear()} Tanner Training LLC. All Rights Reserved.`,
   footerDisclaimer:
-    'RESULTS DISCLAIMER: The results and income figures shared on this page reflect the experiences of individual students and are not typical. Investing in the stock market involves risk, including the possible loss of principal. Past performance is not indicative of future results. Nothing on this page constitutes financial, investment, or legal advice. The Cash Flow Academy and Andy Tanner are educators, not licensed financial advisors.',
+    'Tanner Training LLC is providing this training and any related materials for educational purposes only. We are not providing legal, accounting, or financial advisory services, and this is not a solicitation or recommendation to buy or sell any securities. All investing and trading in the securities markets involves risk of loss. Past performance is not a guarantee of future results. The results and income figures shared reflect the experiences of individual students and are not typical. Individual results will vary based on a variety of factors unique to each individual, including but not limited to prior experience, effort, education, and market conditions. Nothing presented here constitutes financial, investment, or legal advice. By attending this training, you acknowledge that Tanner Training LLC, its affiliates, officers, and employees are not licensed financial advisors and that you are solely responsible for any financial decisions you make.',
   footerLinks: [
-    { label: 'Privacy Policy', url: 'https://thecashflowacademy.com/privacy' },
-    { label: 'Terms of Service', url: 'https://thecashflowacademy.com/terms' },
+    { label: 'Privacy Policy', url: '/privacy' },
+    { label: 'Terms of Service', url: '/terms' },
     { label: 'Contact Us', url: 'https://thecashflowacademy.com/contact' },
   ],
 };

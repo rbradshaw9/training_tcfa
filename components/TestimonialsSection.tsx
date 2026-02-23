@@ -70,8 +70,8 @@ export default function TestimonialsSection({
                   <Image
                     src={t.imageUrl}
                     alt={`Photo of ${t.name}`}
-                    width={44}
-                    height={44}
+                    width={88}
+                    height={88}
                     className={styles.avatar}
                   />
                 )}

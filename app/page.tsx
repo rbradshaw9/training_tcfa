@@ -14,7 +14,6 @@ import config from './funnels/income-stacking/config';
 import { buildMetadata, resolveCssVariables } from '@/lib/funnel-utils';
 
 // Components
-import GTMScript from '@/components/GTMScript';
 import GTMTracker from '@/components/GTMTracker';
 import UrgencyBar from '@/components/UrgencyBar';
 import HeroSection from '@/components/HeroSection';
@@ -37,9 +36,6 @@ export default function RootPage() {
 
   return (
     <>
-      {/* GTM script tags — injected into <head> via next/script */}
-      <GTMScript containerId={config.gtmContainerId} />
-
       {/* Client-side tracker: fires page_view, form_view, scroll_depth events */}
       <GTMTracker funnelSlug={config.slug} />
 

@@ -1,0 +1,212 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   confirmation.module.css — Seat Booking Confirmation Page Styles
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background-color: var(--color-bg, #080808);
+  color: var(--color-text, #f5f5f5);
+  font-family: var(--font-body, 'Inter', sans-serif);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.header {
+  width: 100%;
+  max-width: 760px;
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #1a4d1a, #2d7a2d);
+  color: #7fff7f;
+  font-family: var(--font-headline, 'Montserrat', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #3aaa3a;
+  margin-bottom: 1.25rem;
+}
+
+.headline {
+  font-family: var(--font-headline, 'Montserrat', sans-serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  color: #ffffff;
+}
+
+.subheadline {
+  font-size: 1.05rem;
+  color: var(--color-text-muted, #a3a3a3);
+  line-height: 1.6;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.subheadline strong {
+  color: var(--color-accent, #f5a623);
+}
+
+/* ── Video ───────────────────────────────────────────────────────────────── */
+
+.videoSection {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1.5rem 3rem;
+}
+
+.videoContainer {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Steps ───────────────────────────────────────────────────────────────── */
+
+.steps {
+  width: 100%;
+  max-width: 700px;
+  padding: 0 1.5rem 3rem;
+}
+
+.stepsTitle {
+  font-family: var(--font-headline, 'Montserrat', sans-serif);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 2rem;
+  color: #ffffff;
+}
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--color-surface, #121212);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.5rem;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cta-gradient-start, #e84010), var(--cta-gradient-end, #f5a623));
+  color: #fff;
+  font-family: var(--font-headline, 'Montserrat', sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.stepContent {
+  flex: 1;
+}
+
+.stepHeading {
+  font-family: var(--font-headline, 'Montserrat', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+}
+
+.stepBody {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #a3a3a3);
+  line-height: 1.6;
+  margin: 0 0 0.75rem;
+}
+
+.stepBody strong {
+  color: var(--color-text, #f5f5f5);
+}
+
+.stepCta {
+  display: inline-block;
+  color: var(--color-accent, #f5a623);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.stepCta:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.footer {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footerDisclaimer {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #a3a3a3);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto 1rem;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.footerLink {
+  color: var(--color-text-muted, #a3a3a3);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footerLink:hover {
+  color: var(--color-text, #f5f5f5);
+}
+
+.footerSep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+.footerCopyright {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+}
