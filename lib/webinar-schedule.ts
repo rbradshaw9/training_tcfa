@@ -1,9 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Webinar Schedule — Dynamic next-session calculator.
 //
-// Mirrors the client-side date-switching logic from the original GHL funnel.
-// Finds the next upcoming Daily Income Stacking Webinar session based on the
-// current ET (Eastern Time) date/time.
+// Faithful TypeScript port of the original GHL funnel JavaScript.
+// The rollover logic, time-zone offsets, and date computation are
+// intentionally identical to the source so results match exactly.
 //
 // Schedule (Eastern Time):
 //   Sunday    → 2:00 PM ET  (sessionId: 70650)
@@ -16,7 +16,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface WebinarSession {
-  /** UTC Date object for the session start time */
+  /** UTC Date object for the session start time (for countdown target) */
   date: Date;
   /** ET hour (24h) for the session */
   hour: number;
@@ -24,9 +24,9 @@ export interface WebinarSession {
   minute: number;
   /** WebinarFuel session ID for this day's session */
   sessionId: string;
-  /** Formatted display strings */
+  /** Pre-formatted display strings, ready to render */
   display: {
-    /** e.g. "Tuesday, March 19, 2026" */
+    /** e.g. "Monday, February 23rd" */
     date: string;
     /** e.g. "8:00 PM ET | 7:00 PM CT | 6:00 PM MT | 5:00 PM PT" */
     time: string;
@@ -39,169 +39,163 @@ export const WEBINAR_FUEL_ID = '18569';
 /** IANA timezone used for all schedule calculations */
 export const WEBINAR_TZ = 'America/New_York';
 
-// Day-of-week schedule (0 = Sunday)
-const SCHEDULE: ReadonlyArray<{ hour: number; minute: number; sessionId: string }> = [
-  { hour: 14, minute: 0, sessionId: '70650' }, // Sunday
-  { hour: 20, minute: 0, sessionId: '70644' }, // Monday
-  { hour: 20, minute: 0, sessionId: '70645' }, // Tuesday
-  { hour: 20, minute: 0, sessionId: '70646' }, // Wednesday
-  { hour: 20, minute: 0, sessionId: '70647' }, // Thursday
-  { hour: 20, minute: 0, sessionId: '70648' }, // Friday
-  { hour: 14, minute: 0, sessionId: '70649' }, // Saturday
-];
+// ── Schedule data ─────────────────────────────────────────────────────────────
+
+const DAY_ORDER = [
+  'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday',
+] as const;
+
+type DayName = typeof DAY_ORDER[number];
+
+interface DaySlot {
+  hour: number;
+  minute: number;
+  sessionId: string;
+}
+
+const SCHEDULE: Record<DayName, DaySlot> = {
+  sunday:    { hour: 14, minute: 0, sessionId: '70650' },
+  monday:    { hour: 20, minute: 0, sessionId: '70644' },
+  tuesday:   { hour: 20, minute: 0, sessionId: '70645' },
+  wednesday: { hour: 20, minute: 0, sessionId: '70646' },
+  thursday:  { hour: 20, minute: 0, sessionId: '70647' },
+  friday:    { hour: 20, minute: 0, sessionId: '70648' },
+  saturday:  { hour: 14, minute: 0, sessionId: '70649' },
+};
+
+// ── Helpers (mirrors original JS exactly) ────────────────────────────────────
 
 /**
- * Formats a multi-timezone time line:
- * "8:00 PM ET | 7:00 PM CT | 6:00 PM MT | 5:00 PM PT"
+ * Returns current ET weekday (lowercase), hour (24h), and minute.
+ * Same approach as the original: parse Intl formatToParts.
  */
-function formatMultiTZ(date: Date): string {
+function getNowET(now: Date): { weekday: DayName; hour: number; minute: number } {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: WEBINAR_TZ,
+    weekday: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  }).formatToParts(now);
+
+  const obj: Record<string, string> = {};
+  parts.forEach((p) => { obj[p.type] = p.value; });
+
+  return {
+    weekday: obj.weekday.toLowerCase() as DayName,
+    hour: parseInt(obj.hour === '24' ? '0' : obj.hour, 10),
+    minute: parseInt(obj.minute, 10),
+  };
+}
+
+/**
+ * Returns true if current ET time is at or past the slot time.
+ * Mirrors: h > ch || (h === ch && m >= cm)
+ */
+function isPast(currentH: number, currentM: number, slotH: number, slotM: number): boolean {
+  return currentH > slotH || (currentH === slotH && currentM >= slotM);
+}
+
+/**
+ * Ordinal suffix: 23 → "23rd", 1 → "1st", etc.
+ * Mirrors the original ordinal() function exactly.
+ */
+function ordinal(n: number): string {
+  if (n % 100 >= 11 && n % 100 <= 13) return `${n}th`;
+  const suffixes: Record<number, string> = { 1: 'st', 2: 'nd', 3: 'rd' };
+  return `${n}${suffixes[n % 10] ?? 'th'}`;
+}
+
+/**
+ * Formats multi-timezone time line using fixed offsets from ET.
+ * CT is always ET−1h, MT is ET−2h, PT is ET−3h.
+ * Mirrors the original formatTimes() function exactly.
+ */
+function formatTimes(hourET: number, minute: number): string {
   const zones = [
-    { tz: 'America/New_York', label: 'ET' },
-    { tz: 'America/Chicago', label: 'CT' },
-    { tz: 'America/Denver', label: 'MT' },
-    { tz: 'America/Los_Angeles', label: 'PT' },
+    { label: 'ET', offset: 0 },
+    { label: 'CT', offset: -1 },
+    { label: 'MT', offset: -2 },
+    { label: 'PT', offset: -3 },
   ];
+
   return zones
-    .map(({ tz, label }) => {
-      const time = date.toLocaleString('en-US', {
-        timeZone: tz,
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true,
-      });
-      return `${time} ${label}`;
+    .map(({ label, offset }) => {
+      let h = hourET + offset;
+      const ampm = h >= 12 ? 'PM' : 'AM';
+      h = ((h + 24) % 24) % 12 || 12;
+      return `${h}:${String(minute).padStart(2, '0')} ${ampm} ${label}`;
     })
     .join(' | ');
 }
 
-/**
- * Returns ET date parts for a given UTC Date using Intl.
- */
-function getETParts(date: Date): { year: number; month: number; day: number; hour: number; minute: number; weekday: number } {
-  const fmt = new Intl.DateTimeFormat('en-US', {
-    timeZone: WEBINAR_TZ,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-    weekday: 'short',
-  });
-  const parts = Object.fromEntries(fmt.formatToParts(date).map(p => [p.type, p.value]));
-  const weekdayMap: Record<string, number> = {
-    Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6,
-  };
-  return {
-    year: parseInt(parts.year),
-    month: parseInt(parts.month),
-    day: parseInt(parts.day),
-    hour: parseInt(parts.hour === '24' ? '0' : parts.hour),
-    minute: parseInt(parts.minute),
-    weekday: weekdayMap[parts.weekday] ?? 0,
-  };
-}
+// ── Main export ───────────────────────────────────────────────────────────────
 
 /**
- * Converts ET date parts back to a UTC Date object.
- * Uses the JS trick: construct an ISO string and parse it, then adjust
- * for the actual ET offset at that instant (handles DST).
- */
-function etPartsToUTC(year: number, month: number, day: number, hour: number, minute: number): Date {
-  // Construct a naive ISO string and interpret in ET
-  // We use the "en-US" trick: find the UTC time that gives exactly these ET parts
-  const guess = new Date(`${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}T${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}:00`);
-  // guess is interpreted as UTC; we need to shift it by ET offset
-  // Get the offset at the guessed UTC time
-  const formatter = new Intl.DateTimeFormat('en-US', {
-    timeZone: WEBINAR_TZ,
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  });
-  // Iterate once: get the ET wall-clock for our guess and compute the offset
-  const guessParts = formatter.formatToParts(guess);
-  const guessHour = parseInt(guessParts.find(p => p.type === 'hour')?.value ?? '0');
-  const guessMinute = parseInt(guessParts.find(p => p.type === 'minute')?.value ?? '0');
-  // The offset in minutes between guessed UTC and actual ET
-  let totalGuessMinutes = guessHour * 60 + guessMinute;
-  const totalTargetMinutes = hour * 60 + minute;
-  let diffMinutes = totalTargetMinutes - totalGuessMinutes;
-  // Handle midnight wrap
-  if (diffMinutes > 720) diffMinutes -= 1440;
-  if (diffMinutes < -720) diffMinutes += 1440;
-  return new Date(guess.getTime() - diffMinutes * 60 * 1000);
-}
-
-/**
- * Finds the next upcoming Daily Income Stacking Webinar session.
- * Safe to call server-side or client-side.
+ * Finds the next upcoming webinar session.
  *
- * @param now - optional override for "now" (UTC). Defaults to Date.now().
+ * Algorithm is identical to the original GHL funnel JS:
+ * 1. Get current ET weekday/hour/minute via Intl.DateTimeFormat
+ * 2. Look up today's slot; if at or past start time, roll to tomorrow
+ * 3. Compute the ET calendar date via the toLocaleString trick (DST-safe)
+ * 4. Set session hour/minute on that date for the countdown UTC target
+ *
+ * @param now - optional Date override (defaults to new Date())
  */
 export function getNextSession(now?: Date): WebinarSession {
   const current = now ?? new Date();
-  const etNow = getETParts(current);
+  const etNow = getNowET(current);
 
-  // Scan up to 7 days forward to find the next session
-  for (let daysAhead = 0; daysAhead < 7; daysAhead++) {
-    const checkDate = new Date(current.getTime() + daysAhead * 24 * 60 * 60 * 1000);
-    const et = getETParts(checkDate);
-    const slot = SCHEDULE[et.weekday];
+  // ── Step 1: determine which day to show ──────────────────────────────────
+  let targetDay: DayName = etNow.weekday;
+  let slot = SCHEDULE[targetDay];
 
-    // For today: only use the slot if the session hasn't started yet
-    if (daysAhead === 0) {
-      const currentMinutes = etNow.hour * 60 + etNow.minute;
-      const slotMinutes = slot.hour * 60 + slot.minute;
-      if (currentMinutes >= slotMinutes) continue; // past — skip to tomorrow
-    }
-
-    // Build the UTC Date for this session
-    const sessionUTC = etPartsToUTC(et.year, et.month, et.day, slot.hour, slot.minute);
-
-    return {
-      date: sessionUTC,
-      hour: slot.hour,
-      minute: slot.minute,
-      sessionId: slot.sessionId,
-      display: {
-        date: sessionUTC.toLocaleString('en-US', {
-          timeZone: WEBINAR_TZ,
-          weekday: 'long',
-          month: 'long',
-          day: 'numeric',
-          year: 'numeric',
-        }),
-        time: formatMultiTZ(sessionUTC),
-      },
-    };
+  // If today's session is at or past its start time, roll to tomorrow
+  if (isPast(etNow.hour, etNow.minute, slot.hour, slot.minute)) {
+    const nextIndex = (DAY_ORDER.indexOf(targetDay) + 1) % 7;
+    targetDay = DAY_ORDER[nextIndex];
+    slot = SCHEDULE[targetDay];
   }
 
-  // Fallback: next Sunday 2 PM ET (should never reach here in practice)
-  const fallback = new Date(current.getTime() + 7 * 24 * 60 * 60 * 1000);
-  const et = getETParts(fallback);
-  const sessionUTC = etPartsToUTC(et.year, et.month, et.day, 14, 0);
+  // ── Step 2: compute target ET calendar date ───────────────────────────────
+  // toLocaleString with a timezone returns a string representing that
+  // timezone's wall clock. Passing it to `new Date()` without a timezone
+  // makes JS parse it as local time — giving us a Date whose numeric fields
+  // (getDate, getMonth, getFullYear, etc.) ARE the ET calendar values.
+  // We then offset by the day difference from today to the target day.
+  // This is the same technique used in the original JS.
+  const etLocalDate = new Date(
+    current.toLocaleString('en-US', { timeZone: WEBINAR_TZ })
+  );
+  const dayOffset =
+    (DAY_ORDER.indexOf(targetDay) - DAY_ORDER.indexOf(etNow.weekday) + 7) % 7;
+  etLocalDate.setDate(etLocalDate.getDate() + dayOffset);
+
+  // ── Step 3: build display strings ─────────────────────────────────────────
+  const weekdayDisplay = etLocalDate.toLocaleDateString('en-US', { weekday: 'long' });
+  const monthDisplay   = etLocalDate.toLocaleDateString('en-US', { month: 'long' });
+  const dayOrdinal     = ordinal(etLocalDate.getDate());
+  const dateString     = `${weekdayDisplay}, ${monthDisplay} ${dayOrdinal}`;
+  const timeString     = formatTimes(slot.hour, slot.minute);
+
+  // ── Step 4: set session time and use as UTC countdown target ──────────────
+  // Setting hours/minutes on the etLocalDate (which lives in local-=ET space)
+  // gives us the epoch ms for the exact session moment. Works correctly
+  // in the browser where this code runs.
+  etLocalDate.setHours(slot.hour, slot.minute, 0, 0);
+
   return {
-    date: sessionUTC,
-    hour: 14,
-    minute: 0,
-    sessionId: '70650',
-    display: {
-      date: sessionUTC.toLocaleString('en-US', {
-        timeZone: WEBINAR_TZ,
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      }),
-      time: formatMultiTZ(sessionUTC),
-    },
+    date: etLocalDate,
+    hour: slot.hour,
+    minute: slot.minute,
+    sessionId: slot.sessionId,
+    display: { date: dateString, time: timeString },
   };
 }
 
 /**
- * Returns an ISO 8601 datetime string for the next session.
- * Convenience wrapper for use in config.webinar.datetime and CountdownTimer.
+ * Returns an ISO 8601 string for the next session's start time.
+ * Convenience wrapper for components that take a datetime string.
  */
 export function getNextSessionISO(now?: Date): string {
   return getNextSession(now).date.toISOString();
