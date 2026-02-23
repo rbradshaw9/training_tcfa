@@ -109,15 +109,6 @@ export default function ConfirmationPage() {
           <Link href="/privacy" className={styles.footerLink}>Privacy Policy</Link>
           <span className={styles.footerSep}>·</span>
           <Link href="/terms" className={styles.footerLink}>Terms of Service</Link>
-          <span className={styles.footerSep}>·</span>
-          <a
-            href="https://thecashflowacademy.com/contact"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.footerLink}
-          >
-            Contact Us
-          </a>
         </nav>
         <p className={styles.footerCopyright}>
           © {new Date().getFullYear()} Tanner Training LLC. All Rights Reserved.

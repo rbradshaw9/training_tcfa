@@ -24,8 +24,7 @@ export default function PageFooter({
 }: PageFooterProps) {
   return (
     <footer className={styles.footer} aria-label="Page footer">
-      <div className={`container ${styles.inner}`}>
-
+      <div className={styles.inner}>
         {/* Links row */}
         {links && links.length > 0 && (
           <nav className={styles.links} aria-label="Footer links">

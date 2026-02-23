@@ -56,7 +56,7 @@ const config: FunnelConfig = {
     'And So Much More!',
   ],
   heroCtaText: 'CLICK HERE TO REGISTER NOW',
-  heroBackgroundImage: '/images/andy-with-kiyosaki.png',
+  heroBackgroundImage: '',
 
   // ── Registration Form ─────────────────────────────────────────────────────
   formTitle: "DON'T MISS THIS FREE TRAINING",
@@ -102,7 +102,7 @@ const config: FunnelConfig = {
   </div>
 
   <div class="infusion-field">
-    <label for="inf_field_Phone1">Phone 1</label>
+    <label for="inf_field_Phone1">Mobile Phone</label>
     <input id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Phone 1" type="text" />
   </div>
 
@@ -262,7 +262,6 @@ const config: FunnelConfig = {
   footerLinks: [
     { label: 'Privacy Policy', url: '/privacy' },
     { label: 'Terms of Service', url: '/terms' },
-    { label: 'Contact Us', url: 'https://thecashflowacademy.com/contact' },
   ],
 };
 

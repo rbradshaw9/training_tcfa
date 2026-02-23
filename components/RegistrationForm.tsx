@@ -15,6 +15,7 @@
 
 import { useEffect, useRef } from 'react';
 import { fireFormSubmit, fireFormStart } from '@/lib/gtm';
+import { parseHeadline } from '@/lib/parseHeadline';
 import styles from './RegistrationForm.module.css';
 
 export interface RegistrationFormProps {
@@ -198,7 +199,7 @@ export default function RegistrationForm({
               {learningPoints!.map((point, i) => (
                 <li key={i} className={styles.learnItem}>
                   <span className={styles.learnCheck} aria-hidden="true">✓</span>
-                  <span>{point}</span>
+                  <span>{parseHeadline(point)}</span>
                 </li>
               ))}
             </ul>
