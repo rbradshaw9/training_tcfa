@@ -1,0 +1,51 @@
+/* PageFooter.module.css */
+
+.footer {
+  background: #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: var(--space-2xl) 0;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+/* Links row */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+.link {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+/* Disclaimer */
+.disclaimer {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1.65;
+  max-width: 700px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Copyright */
+.copyright {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin: 0;
+}

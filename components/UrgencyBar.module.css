@@ -1,0 +1,59 @@
+/* UrgencyBar.module.css */
+
+.bar {
+  background: var(--urgency-bar-bg);
+  color: var(--urgency-bar-text);
+  padding: var(--space-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 800;
+  color: var(--urgency-bar-text);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.subtext {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.cta {
+  white-space: nowrap;
+  font-size: 0.85rem !important;
+  padding: 0.6rem 1.25rem !important;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .cta {
+    width: 100%;
+  }
+}

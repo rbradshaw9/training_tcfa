@@ -1,0 +1,136 @@
+/* TestimonialsSection.module.css */
+
+.section {
+  background: var(--color-bg);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.title {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 900;
+  color: var(--color-text);
+}
+
+.divider {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-pill);
+  margin: var(--space-lg) auto 0;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Result banner */
+.result {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--cta-gradient-start), var(--cta-gradient-end));
+  color: #fff;
+  font-family: var(--font-headline);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-pill);
+  align-self: flex-start;
+}
+
+/* Stars */
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.starFilled {
+  color: var(--color-accent);
+  font-size: 1rem;
+}
+
+.starEmpty {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 1rem;
+}
+
+/* Quote */
+.quote {
+  flex: 1;
+}
+
+.quote p {
+  font-size: 0.975rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Attribution */
+.attribution {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-primary);
+  flex-shrink: 0;
+}
+
+.attributionText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.authorTitle {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

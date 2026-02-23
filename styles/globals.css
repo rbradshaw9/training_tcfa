@@ -1,0 +1,441 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   globals.css — Base styles for the webinar funnel platform.
+   
+   All color/font values use CSS custom properties that are injected
+   dynamically from each funnel's config via resolveCssVariables().
+   The defaults here are overridden at the component/page level via
+   the style prop on the outermost wrapper.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Font imports ──────────────────────────────────────────────────────────── */
+/*
+  Fonts are loaded via <link> tags in app/layout.tsx (preconnect + stylesheet).
+  The @import was removed because CSS @import is render-blocking — it adds
+  300-600ms latency on mobile before any content paints.
+  Do not re-add @import here.
+*/
+
+/* ── Fallback / base custom properties ─────────────────────────────────────── */
+:root {
+  --color-primary: #e84010;
+  --color-primary-hover: #c73509;
+  --color-accent: #f5a623;
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-text: #ffffff;
+  --color-text-muted: #a3a3a3;
+  --font-headline: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --cta-gradient-start: #e84010;
+  --cta-gradient-end: #f5a623;
+  --hero-bg: linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%);
+  --urgency-bar-bg: #b71c1c;
+  --urgency-bar-text: #ffffff;
+
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow-primary: 0 0 24px rgba(232, 64, 16, 0.35);
+  --shadow-glow-accent: 0 0 24px rgba(245, 166, 35, 0.35);
+
+  /* Max content width */
+  --content-max-width: 1100px;
+  --content-narrow-width: 680px;
+
+  /* Form container width */
+  --form-max-width: 520px;
+
+  /* Transition */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+/* ── CSS Reset ──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography base ────────────────────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headline);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* ── Utility classes ────────────────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.container--narrow {
+  max-width: var(--content-narrow-width);
+}
+
+/* ── CTA Button — shared across components ────────────────────────────────── */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 1.1rem 2.5rem;
+  background: linear-gradient(135deg, var(--cta-gradient-start) 0%, var(--cta-gradient-end) 100%);
+  color: #ffffff;
+  font-family: var(--font-headline);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  border: none;
+  box-shadow: var(--shadow-glow-primary), var(--shadow-md);
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    filter var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
+  filter: brightness(1.05);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.cta-button:active {
+  transform: translateY(0) scale(0.99);
+  filter: brightness(0.97);
+}
+
+.cta-button--large {
+  font-size: 1.25rem;
+  padding: 1.35rem 3rem;
+}
+
+.cta-button--pulse {
+  animation: ctaPulse 2s infinite;
+}
+
+@keyframes ctaPulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow-glow-primary), var(--shadow-md);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(232, 64, 16, 0.6), var(--shadow-lg);
+  }
+}
+
+/* ── Section padding ────────────────────────────────────────────────────────── */
+.section {
+  padding-top: var(--space-4xl);
+  padding-bottom: var(--space-4xl);
+}
+
+.section--tight {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────────────── */
+.divider {
+  width: 64px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--radius-pill);
+  margin: var(--space-lg) auto;
+}
+
+/* ── Highlight / accent spans ───────────────────────────────────────────────── */
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* ── Infusionsoft embed wrapper ─────────────────────────────────────────────── */
+/*
+  We inject Infusionsoft's HTML into a wrapper div.
+  These rules style around the form — overriding IS defaults where needed.
+  Specificity is intentionally high to beat Infusionsoft's inline styles.
+*/
+.infusionsoft-form-wrapper {
+  width: 100%;
+}
+
+.infusionsoft-form-wrapper iframe {
+  width: 100% !important;
+  min-width: 100% !important;
+  border: none !important;
+}
+
+/* Override common Infusionsoft form background */
+.infusionsoft-form-wrapper > div,
+.infusionsoft-form-wrapper form {
+  background: transparent !important;
+}
+
+/* ── Infusionsoft direct-HTML form styles ───────────────────────────────────── */
+/*
+  Applied when using the actual IS form HTML (not iframe embed).
+  These classes are output by Keap/Infusionsoft's webform builder.
+*/
+.infusion-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.infusion-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.infusion-field label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  margin-bottom: 0;
+}
+
+.infusion-field input[type='text'],
+.infusion-field input[type='email'],
+.infusion-field input[type='tel'],
+.infusion-field input[type='number'],
+.infusion-field select,
+.infusion-field textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.infusion-field input:focus,
+.infusion-field select:focus,
+.infusion-field textarea:focus {
+  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.2);
+}
+
+.infusion-field input::placeholder,
+.infusion-field textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Checkbox row */
+.infusion-field .infusion-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.infusion-field .infusion-checkbox input[type='checkbox'] {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.infusion-field .infusion-checkbox label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+/* Submit button */
+.infusion-submit {
+  padding-top: 0.25rem;
+}
+
+.infusion-submit button,
+.infusion-submit input[type='submit'] {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: linear-gradient(135deg, var(--cta-gradient-start) 0%, var(--cta-gradient-end) 100%);
+  color: #ffffff;
+  font-family: var(--font-headline);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  box-shadow: var(--shadow-glow-primary), var(--shadow-md);
+  transition:
+    transform var(--transition-fast),
+    filter var(--transition-fast),
+    box-shadow var(--transition-fast);
+  animation: ctaPulse 2s infinite;
+}
+
+.infusion-submit button:hover,
+.infusion-submit input[type='submit']:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.07);
+  box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
+}
+
+.infusion-submit button:active,
+.infusion-submit input[type='submit']:active {
+  transform: translateY(0) scale(0.99);
+  filter: brightness(0.97);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
+    --space-3xl: 2.5rem;
+    --space-4xl: 3rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 1rem 1.75rem;
+  }
+
+  .cta-button--large {
+    font-size: 1.1rem;
+    padding: 1.1rem 2rem;
+    width: 100%;
+  }
+}

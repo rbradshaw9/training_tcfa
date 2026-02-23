@@ -1,0 +1,60 @@
+/* TrustBadges.module.css */
+
+.wrapper {
+  background: var(--color-surface);
+  padding: var(--space-xl) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xl);
+  list-style: none;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cta-gradient-start), var(--cta-gradient-end));
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.label {
+  color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .list {
+    gap: var(--space-lg);
+  }
+  .badge {
+    font-size: 0.8rem;
+  }
+}

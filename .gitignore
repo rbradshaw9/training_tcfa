@@ -1,0 +1,19 @@
+# deps
+node_modules
+
+# Next.js build output
+.next
+out
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Vercel
+.vercel
+
+# Local env
+.env*.local
+.env
+
+# OS
+.DS_Store

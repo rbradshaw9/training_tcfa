@@ -1,0 +1,128 @@
+/* RegistrationForm.module.css */
+
+.section {
+  background: var(--color-bg);
+}
+
+/* ── Layout variants ──────────────────────────────────────────────────────── */
+
+/* Two-column layout: learn points | form */
+.inner.withLearn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* Centered single-column layout (bottom form) */
+.inner.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner.centered .formCol {
+  width: 100%;
+  max-width: var(--form-max-width);
+}
+
+/* ── Learning Points column ────────────────────────────────────────────────── */
+.learnCol {
+  padding-top: var(--space-lg);
+}
+
+.learnTitle {
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.2;
+  margin-bottom: var(--space-xl);
+}
+
+.learnList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.learnItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.learnCheck {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cta-gradient-start), var(--cta-gradient-end));
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+/* ── Form column ──────────────────────────────────────────────────────────── */
+.formCol {
+  width: 100%;
+}
+
+.formCard {
+  background: var(--color-surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.formTitle {
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 900;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.formSubtext {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  line-height: 1.6;
+}
+
+.embedWrapper {
+  margin-bottom: var(--space-md);
+}
+
+.privacy {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .inner.withLearn {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .learnCol {
+    order: 2; /* Form goes first on mobile — primary conversion action first */
+  }
+
+  .formCol {
+    order: 1;
+  }
+}
