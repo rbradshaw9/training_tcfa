@@ -129,8 +129,8 @@ export default function RootPage() {
         {/* ── 8. Bottom CTA + Form (repeat for long-scroll conversion) ──── */}
         <RegistrationForm
           formEmbedCode={config.formEmbedCode}
-          formTitle="Don't Miss Out — Secure Your Seat Before It's Gone"
-          formSubtext={config.formSubtext}
+          formTitle="BUILD RETIREMENT SAVINGS. CREATE NEW INCOME STREAMS. UPGRADE YOUR LIFESTYLE."
+          formSubtext="Claim your spot now and discover how Income Stacking can transform your financial future."
           formPrivacyNote={config.formPrivacyNote}
           ctaText={config.heroCtaText}
           funnelSlug={config.slug}

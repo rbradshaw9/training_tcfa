@@ -15,12 +15,12 @@ const config: FunnelConfig = {
 
   // ── Meta & SEO ────────────────────────────────────────────────────────────
   meta: {
-    title: 'How to Create Multiple Income Streams in 2026 — Free Live Training',
+    title: 'Maximize Your Investments with Income Stacking — Free Live Masterclass with Andy Tanner',
     description:
-      'Discover the exact 3-step "Income Stacking" method that lets everyday people build multiple streams of passive income — even if you start with no money, no audience, and no experience.',
-    ogTitle: 'FREE Training: The Income Stacking Blueprint',
+      'Unlock the power of Cash Flow Stocks and discover how to generate multiple income streams from a single stock. Join Rich Dad Expert Andy Tanner for this free masterclass.',
+    ogTitle: 'FREE Masterclass: Income Stacking with Cash Flow Stocks',
     ogDescription:
-      'Join Ryan Bradshaw LIVE as he reveals the no-fluff system for stacking $3,000–$10,000+ per month in passive income streams alongside your current job.',
+      'Join Rich Dad Expert Andy Tanner LIVE and discover how to generate three unique income streams from a single stock — for consistent cash flow that grows and compounds over time.',
     ogImage: 'https://go.thecashflowacademy.com/og/income-stacking.jpg',
     canonicalUrl: 'https://training.thecashflowacademy.com',
     twitterCard: 'summary_large_image',
@@ -37,7 +37,7 @@ const config: FunnelConfig = {
   //                   Leave `datetime` unset; it is computed at runtime.
   webinarFuelId: WEBINAR_FUEL_ID,
   webinar: {
-    title: 'The Income Stacking Blueprint',
+    title: 'Maximize Your Investments with Income Stacking',
     dynamic: true,
     timezone: 'America/New_York',
     durationMinutes: 90,
@@ -46,26 +46,24 @@ const config: FunnelConfig = {
   },
 
   // ── Hero Section ──────────────────────────────────────────────────────────
-  heroBadgeText: '🔴 FREE LIVE TRAINING — LIMITED SEATS',
-  heroHeadline:
-    'How to Stack $3,000–$10,000+ Per Month in Passive Income\n—Without Quitting Your Job',
+  heroBadgeText: '🔴 FREE LIVE MASTERCLASS — JOIN RICH DAD EXPERT ANDY TANNER',
+  heroHeadline: 'MAXIMIZE YOUR INVESTMENTS WITH **INCOME STACKING**',
   heroSubheadline:
-    'Join investor & educator Ryan Bradshaw on this free 90-minute training where he reveals the exact "Income Stacking" blueprint his students use to build 3–5 streams of leveraged income — starting from scratch.',
+    'Unlock the power of Cash Flow Stocks and discover how to generate multiple income streams from a single stock.',
   heroBullets: [
-    'The 3 "low-friction" income streams that work even if you have zero experience or start-up capital',
-    'Why trading your time for money is the #1 financial trap — and the exact escape plan',
-    'How to stack income streams in the right ORDER so each one funds the next',
-    'The single shift in thinking that separates people who build wealth vs. those who just stay busy',
-    'A live walkthrough of a real $6,200/month income stack built in under 12 months',
+    'Step-by-Step Investing Blueprint: Access the proven methods Andy has shared with thousands of investors worldwide.',
+    'Time-Tested Strategies: Perfect for anyone looking to build wealth — even if you feel behind and need to catch up.',
+    'Boost Your Confidence: Learn how to take control of your financial future with clear, actionable steps.',
+    'And So Much More!',
   ],
-  heroCtaText: 'YES! RESERVE MY FREE SEAT NOW →',
+  heroCtaText: 'CLICK HERE TO REGISTER NOW',
   heroBackgroundImage: '',
 
   // ── Registration Form ─────────────────────────────────────────────────────
-  formTitle: 'Claim Your Free Seat',
+  formTitle: "DON'T MISS THIS FREE TRAINING",
   formSubtext:
-    'Enter your name and best email below to register instantly. You\'ll receive a confirmation with all the details.',
-  formPrivacyNote: '🔒 100% Free. No spam. Unsubscribe anytime.',
+    'Claim your spot now and discover how Income Stacking can transform your financial future.',
+  formPrivacyNote: '🔒 100% Free. Spots are limited. Don\'t miss out!',
 
   // ─────────────────────────────────────────────────────────────────────────
   // INFUSIONSOFT FORM EMBED
@@ -153,68 +151,75 @@ const config: FunnelConfig = {
 
   // ── Speaker ───────────────────────────────────────────────────────────────
   speaker: {
-    name: 'Ryan Bradshaw',
-    title: 'Real Estate Investor & Financial Educator | Founder, The Cash Flow Academy',
-    bio: "Ryan Bradshaw built his first income-stacking system while working a W-2 job and raising a family. After years of trial and error, he cracked a repeatable formula for layering multiple streams of passive income — then packaged it into a training system that has helped over 42,000 students across North America build real, lasting financial freedom. His approach is different: no get-rich-quick promises, no complicated strategies — just a clear, sequenced blueprint anyone can execute.",
-    headshotUrl: '/images/ryan-bradshaw-headshot.jpg',
+    name: 'Andy Tanner',
+    title: 'Noted Author, Speaker, Teacher, and Long-time Rich Dad Expert',
+    bio: "With a lifelong passion for Teaching, Investing, Entrepreneurship, and Self Development, Andy Tanner has devoted his career to training and inspiring motivated people all over the world. Andy's passion for helping investors and entrepreneurs shows through in everything he does: The Cash Flow Academy Show podcast, regular investing update videos and commentary, interviews with top experts, and focused training programs. The goal with The Cash Flow Academy is to make everything fun, simple, and real.\n\nAndy is a lifelong teacher and student of investing. His mission: empower and inspire people to discover how to create their own income — showing them what it really takes to become in control and self-sufficient.",
+    headshotUrl: '/images/andy-tanner-headshot.jpg',
     credentials: [
-      'Built a 7-figure real estate portfolio from a $0 starting point',
-      'Founder of The Cash Flow Academy — 42,000+ students trained',
-      'Author of "The Income Stack" — Amazon #1 Best Seller in Personal Finance',
-      'Featured in Forbes, Entrepreneur, and The Wall Street Journal',
+      'Long-time Rich Dad Expert and close collaborator of Robert Kiyosaki',
+      'Author of "Stock Market Cash Flow" — a Rich Dad Advisors book',
+      'Founder of The Cash Flow Academy — thousands of investors trained worldwide',
+      'Creator of the Income Stacking method for generating 3 income streams from a single stock',
     ],
     companyLogoUrl: '/images/tcfa-logo-white.svg',
-    socialProof: 'Over 42,000 students trained nationwide',
+    socialProof: 'Thousands of investors trained worldwide',
   },
 
   // ── What You'll Learn ─────────────────────────────────────────────────────
-  learnSectionTitle: "Here's Exactly What You'll Discover on This Free Training:",
+  learnSectionTitle: 'ANDY IS SHARING HIS MOST POWERFUL STRATEGIES',
   learningPoints: [
-    'The "Income Stack" framework — 3 specific stream types, in the exact order to build them for maximum leverage',
-    'Why most people fail to create passive income (the 3 mistakes that keep you stuck in the time-for-money trap)',
-    'How to identify YOUR personal income stack based on your available time, skills, and starting capital',
-    'The fastest path to your first $1,000/month in semi-passive income — the one stream Ryan recommends every beginner start with',
-    'How to automate and hand off each stream once it\'s producing — so it truly runs without you',
-    'A real case study: how one student went from $0 to $6,200/month in 11 months starting with just $1,500',
-    'The exact tools, platforms, and structures Ryan uses to manage 7 income streams simultaneously',
+    'Discover the secret of Income Stacking with cash flow stocks — and see how anyone can unlock the potential for consistent income.',
+    '**WHY INCOME STACKING IS SUPERIOR:** Unlike the typical "buy and hold" strategy, this method shows you how to generate three unique income streams from a single stock.',
+    'Instead of relying on unpredictable stock value increases, learn how to turn your investments into consistent cash flow that grows and compounds for greater wealth.',
+    '**ELIMINATE YOUR INVESTING FEARS:** Discover a strategy that builds confidence by focusing on generating income rather than gambling on market swings — with Andy showing you how to stack income streams while minimizing risks.',
+    '**ACCELERATE YOUR INCOME AND CATCH UP FASTER:** It\'s never too late to start. This strategy creates multiple cash flow streams that compound over time, giving you the chance to achieve your lifestyle goals sooner.',
   ],
 
   // ── Testimonials ──────────────────────────────────────────────────────────
-  testimonialsSectionTitle: 'Real Students. Real Results.',
+  testimonialsSectionTitle: "What Andy's Students Are Saying",
   testimonials: [
     {
-      name: 'Marcus T.',
-      title: 'Firefighter, Dallas TX',
+      name: 'Justin OKeefe',
       quote:
-        "I was skeptical — I've seen too many 'passive income' gurus online. But Ryan's blueprint was different. No fluff, no hype, just a step-by-step system. I implemented the first two streams while working my 24-hour shifts and hit $3,400/month within 8 months.",
-      result: '$3,400/month in 8 months',
+        "Andy's teaching style is fantastic. If you don't understand the first time he will explain it — his talent for describing and personalizing concepts, and drawing fantastic diagrams that help explain any idea, really helps. With Andy you will definitely be able to learn to invest for cash flow with confidence.",
       stars: 5,
-      imageUrl: '/images/testimonials/marcus-t.jpg',
     },
     {
-      name: 'Jennifer L.',
-      title: 'Elementary School Teacher, Phoenix AZ',
+      name: 'David Corley',
       quote:
-        "I joined the training with $800 in savings and zero investing experience. Ryan walked me through exactly which stream to start with at my level. Eighteen months later I have three income streams producing $4,100/month and I've started my fourth.",
-      result: '$4,100/month from 3 streams',
+        'Andy makes things very simple to understand. This is a pretty complicated subject but I got the basics easily through his teaching style very early in the classes. I know that I will get out of the rat race and have financial freedom!',
       stars: 5,
-      imageUrl: '/images/testimonials/jennifer-l.jpg',
     },
     {
-      name: 'Derek & Aisha W.',
-      title: 'Married couple, two incomes, Atlanta GA',
+      name: 'Guy Pierce',
       quote:
-        "We came into the training thinking we needed a lot of money to start. Ryan completely flipped our thinking. We stacked correctly like he taught and now our combined stream income covers our entire mortgage, car payment, and then some.",
-      result: 'Income streams cover $4,800/mo in fixed expenses',
+        "Andy's teaching style was perfect for a beginner like me to trading in the stock market. I can't believe how simple the process has become in just 30 days! I am placing trades and getting cash flow immediately and with Andy's training (and his awesome team) I am able to keep that cash repeatedly.",
       stars: 5,
-      imageUrl: '/images/testimonials/derek-aisha-w.jpg',
+    },
+    {
+      name: 'Michael Tollen',
+      quote:
+        "Andy's teaching style is clear, and he repeats the more complex concepts so that all understand them. It gives me confidence to buy & sell options. I won't need to put up so much capital to invest, and my risk can be controlled.",
+      stars: 5,
+    },
+    {
+      name: 'Carlos Azuero',
+      quote:
+        'Andy opened my eyes to a new world of possibilities. I realized that this is true — you can have control on the investment in this market with cash flow, something that I did not know could be possible.',
+      stars: 5,
+    },
+    {
+      name: 'Fortuna Gyeltsen',
+      quote:
+        'The training has improved my life in the short term by illuminating an accessible investment technique that allows control and risk management in a liquid market. I can sleep better at night knowing that I do not have to fall at the mercy of the market\'s ups and downs, but can position my investments accordingly.',
+      stars: 5,
     },
   ],
 
   // ── Urgency Bar ───────────────────────────────────────────────────────────
   urgencyEnabled: true,
-  urgencyHeadline: '⚠️ This Training Is Filling Up — Seats Are Strictly Limited',
-  urgencySubtext: 'We cap attendance to ensure quality Q&A time with Ryan. Reserve your seat now.',
+  urgencyHeadline: '⚠️ Spots Are Limited — Don\'t Miss Out on This Free Training with Andy Tanner',
+  urgencySubtext: 'We cap attendance to ensure a quality experience. Reserve your spot now before it\'s full.',
   urgencySpotsRemaining: 47,
 
   // ── Trust Badges ──────────────────────────────────────────────────────────
@@ -223,7 +228,7 @@ const config: FunnelConfig = {
     { label: 'Instant Confirmation' },
     { label: 'Replay Available' },
     { label: 'No Credit Card Required' },
-    { label: 'Trusted by 42,000+ Students' },
+    { label: 'Rich Dad Expert' },
   ],
 
   // ── Theme ─────────────────────────────────────────────────────────────────
@@ -248,7 +253,7 @@ const config: FunnelConfig = {
   // ── Footer ────────────────────────────────────────────────────────────────
   footerCopyright: `© ${new Date().getFullYear()} The Cash Flow Academy. All Rights Reserved.`,
   footerDisclaimer:
-    'INCOME DISCLAIMER: The income figures shared on this page are not typical. Individual results will vary based on effort, experience, and market conditions. This training is for educational purposes only and does not constitute financial or investment advice.',
+    'RESULTS DISCLAIMER: The results and income figures shared on this page reflect the experiences of individual students and are not typical. Investing in the stock market involves risk, including the possible loss of principal. Past performance is not indicative of future results. Nothing on this page constitutes financial, investment, or legal advice. The Cash Flow Academy and Andy Tanner are educators, not licensed financial advisors.',
   footerLinks: [
     { label: 'Privacy Policy', url: 'https://thecashflowacademy.com/privacy' },
     { label: 'Terms of Service', url: 'https://thecashflowacademy.com/terms' },
