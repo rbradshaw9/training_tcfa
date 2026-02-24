@@ -41,7 +41,6 @@ const config: FunnelConfig = {
     timezone: 'America/New_York',
     durationMinutes: 90,
     type: 'live',
-    platform: 'Zoom Webinar',
   },
 
   // ── Hero Section ──────────────────────────────────────────────────────────
@@ -56,7 +55,7 @@ const config: FunnelConfig = {
     'And So Much More!',
   ],
   heroCtaText: 'CLICK HERE TO REGISTER NOW',
-  heroBackgroundImage: '',
+  heroBackgroundImage: '/images/andy-with-kiyosaki.png',
 
   // ── Registration Form ─────────────────────────────────────────────────────
   formTitle: "DON'T MISS THIS FREE TRAINING",
@@ -83,7 +82,7 @@ const config: FunnelConfig = {
   method="POST"
 >
   <input name="inf_form_xid" type="hidden" value="8f04d117543e2ecf27d40a3338f87e9d" />
-  <input name="inf_form_name" type="hidden" value="Daily Income StackingWebinar Registration" />
+  <input name="inf_form_name" type="hidden" value="Daily Income Stacking Webinar Registration" />
   <input name="infusionsoft_version" type="hidden" value="1.70.0.905221" />
 
   <div class="infusion-field">
@@ -103,7 +102,7 @@ const config: FunnelConfig = {
 
   <div class="infusion-field">
     <label for="inf_field_Phone1">Mobile Phone</label>
-    <input id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Phone 1" type="text" />
+    <input id="inf_field_Phone1" name="inf_field_Phone1" placeholder="Phone 1" type="tel" />
   </div>
 
   <div class="infusion-field">

@@ -85,12 +85,17 @@ export default function RootPage() {
           targetDatetime={config.webinar.dynamic ? undefined : config.webinar.datetime}
           timezone={config.webinar.timezone}
           webinarTitle={config.webinar.title}
+          presenterName={config.speaker.name.split(' ')[0]}
           funnelSlug={config.slug}
         />
 
+        {/* ── 4. Speaker Bio ────────────────────────────────────────────── */}
+        {/* Credibility BEFORE testimonials and the registration ask. */}
+        <SpeakerBio speaker={config.speaker} funnelSlug={config.slug} />
+
         {/*
-          ── 4. Testimonials (above the first form) ────────────────────────
-          Social proof before the ask — lands at peak trust evaluation.
+          ── 5. Testimonials ───────────────────────────────────────────────
+          Social proof after credibility is established.
         */}
         {config.testimonials && config.testimonials.length > 0 && (
           <TestimonialsSection
@@ -100,7 +105,7 @@ export default function RootPage() {
           />
         )}
 
-        {/* ── 5. What You'll Learn + Registration Form (side-by-side on desktop) */}
+        {/* ── 6. What You'll Learn + Registration Form (side-by-side on desktop) */}
         <RegistrationForm
           formEmbedCode={config.formEmbedCode}
           formTitle={config.formTitle}
@@ -113,9 +118,6 @@ export default function RootPage() {
           formId="registration-form"
           formInstance="top"
         />
-
-        {/* ── 6. Speaker Bio ────────────────────────────────────────────── */}
-        <SpeakerBio speaker={config.speaker} funnelSlug={config.slug} />
 
         {/* ── 7. Trust Badges ───────────────────────────────────────────── */}
         {config.trustBadges && config.trustBadges.length > 0 && (
@@ -130,6 +132,8 @@ export default function RootPage() {
           formPrivacyNote={config.formPrivacyNote}
           ctaText={config.heroCtaText}
           funnelSlug={config.slug}
+          formId="registration-form-bottom"
+          formInstance="bottom"
           isBottomForm
         />
 

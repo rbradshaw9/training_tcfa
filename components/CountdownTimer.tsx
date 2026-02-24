@@ -24,6 +24,8 @@ export interface CountdownTimerProps {
   timezone: string;
   /** Short webinar title for display in the "happening now" state */
   webinarTitle: string;
+  /** Presenter's first name used in the scarcity message. Defaults to 'the presenter'. */
+  presenterName?: string;
   funnelSlug: string;
   /**
    * When the timer is this many days or more away, suppress the ticking
@@ -63,6 +65,7 @@ export default function CountdownTimer({
   targetDatetime,
   timezone,
   webinarTitle,
+  presenterName = 'the presenter',
   funnelSlug,
   urgencyThresholdDays = 3,
 }: CountdownTimerProps) {
@@ -119,7 +122,7 @@ export default function CountdownTimer({
           <p className={styles.approachingLabel}>Seats Are Filling Up For This Training</p>
           <p className={styles.approachingDate}>{formattedDate}</p>
           <p className={styles.approachingSubtext}>
-            We cap attendance to keep Q&amp;A time with {webinarTitle.split(' ')[0] === 'The' ? 'the presenter' : 'Ryan'} meaningful.
+            We cap attendance to keep Q&amp;A time with {presenterName} meaningful.
             Spots go quickly once registration opens to our full list.
           </p>
           <button
