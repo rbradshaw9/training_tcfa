@@ -23,7 +23,7 @@ export default function TermsPage() {
         </nav>
 
         <h1 className={styles.title}>Terms and Conditions</h1>
-        <p className={styles.lastUpdated}>Last updated: January 22, 2021</p>
+        <p className={styles.lastUpdated}>Last updated: February 24, 2026</p>
 
         <p className={styles.intro}>
           Please read these Terms of Use (&ldquo;Terms,&rdquo; &ldquo;Terms of Use&rdquo;) carefully before

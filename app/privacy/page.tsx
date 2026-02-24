@@ -23,108 +23,87 @@ export default function PrivacyPage() {
         </nav>
 
         <h1 className={styles.title}>Privacy Policy</h1>
+        <p className={styles.lastUpdated}>Last updated: February 24, 2026</p>
 
         <h2 className={styles.sectionTitle}>Who We Are</h2>
         <p className={styles.body}>
-          Our website address is:{' '}
+          This registration page is operated by Tanner Training LLC d/b/a The Cash Flow Academy
+          (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;). Our primary website is{' '}
           <a href="https://thecashflowacademy.com" target="_blank" rel="noopener noreferrer" className={styles.link}>
-            https://thecashflowacademy.com
+            thecashflowacademy.com
           </a>.
-          This training is provided by Tanner Training LLC / The Cash Flow Academy.
         </p>
 
-        <h2 className={styles.sectionTitle}>What Personal Data We Collect and Why</h2>
-
-        <h3 className={styles.subSectionTitle}>Comments</h3>
+        <h2 className={styles.sectionTitle}>What Information We Collect</h2>
         <p className={styles.body}>
-          When visitors leave comments on the site we collect the data shown in the comments form,
-          and also the visitor&rsquo;s IP address and browser user agent string to help spam detection.
-          An anonymized string created from your email address (also called a hash) may be provided
-          to the Gravatar service to see if you are using it. The Gravatar service privacy policy is
-          available at{' '}
-          <a href="https://automattic.com/privacy/" target="_blank" rel="noopener noreferrer" className={styles.link}>
-            automattic.com/privacy
-          </a>.
-          After approval of your comment, your profile picture is visible to the public in the
-          context of your comment.
+          When you register for an Income Stacking webinar, we collect the information you submit
+          in the registration form: your first name, last name, email address, and optionally your
+          mobile phone number. We also automatically collect your IP address, browser type, and
+          referring URL for security and analytics purposes.
+        </p>
+        <p className={styles.body}>
+          If you arrive via a tracked link (e.g. from an email, advertisement, or affiliate partner),
+          we may collect UTM campaign parameters and click identifiers (such as a Google Click ID or
+          Facebook Click ID) to understand how you found us.
         </p>
 
-        <h3 className={styles.subSectionTitle}>Media</h3>
+        <h2 className={styles.sectionTitle}>How We Use Your Information</h2>
         <p className={styles.body}>
-          If you upload images to the website, you should avoid uploading images with embedded
-          location data (EXIF GPS) included. Visitors to the website can download and extract any
-          location data from images on the website.
+          We use the information you provide to:
+        </p>
+        <ul className={styles.list}>
+          <li className={styles.listItem}>Confirm your webinar registration and send you the access link.</li>
+          <li className={styles.listItem}>Send reminder emails and, if you opted in, SMS reminders before the training.</li>
+          <li className={styles.listItem}>Follow up after the training with related educational content, offers, and announcements from The Cash Flow Academy.</li>
+          <li className={styles.listItem}>Improve our training programs and marketing based on aggregate analytics.</li>
+        </ul>
+        <p className={styles.body}>
+          We do not sell your personal information to third parties.
         </p>
 
-        <h3 className={styles.subSectionTitle}>Contact Forms</h3>
+        <h2 className={styles.sectionTitle}>Third-Party Services</h2>
         <p className={styles.body}>
-          Information submitted through contact forms on this site is used solely to respond to your
-          inquiry. We do not share this information with third parties except as necessary to fulfill
-          your request.
+          We use the following third-party services to deliver and track our webinars:
         </p>
+        <ul className={styles.list}>
+          <li className={styles.listItem}><strong>Keap / Infusionsoft</strong> — stores your registration data and manages email and SMS delivery. Their privacy policy is available at{' '}
+            <a href="https://keap.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className={styles.link}>keap.com/legal/privacy-policy</a>.
+          </li>
+          <li className={styles.listItem}><strong>WebinarFuel</strong> — manages webinar session tracking and attendance. Your registration is associated with a session ID used to deliver the training.</li>
+          <li className={styles.listItem}><strong>Google Tag Manager / Google Analytics</strong> — collects anonymized page view and interaction data to help us understand how visitors use our site. Google&rsquo;s privacy policy is available at{' '}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className={styles.link}>policies.google.com/privacy</a>.
+          </li>
+          <li className={styles.listItem}><strong>Vimeo</strong> — hosts the welcome video on our confirmation page. Vimeo may set cookies and collect data per their privacy policy at{' '}
+            <a href="https://vimeo.com/privacy" target="_blank" rel="noopener noreferrer" className={styles.link}>vimeo.com/privacy</a>.
+          </li>
+        </ul>
 
         <h2 className={styles.sectionTitle}>Cookies</h2>
         <p className={styles.body}>
-          If you leave a comment on our site you may opt in to saving your name, email address, and
-          website in cookies. These are for your convenience so that you do not have to fill in your
-          details again when you leave another comment. These cookies will last for one year.
-        </p>
-        <p className={styles.body}>
-          If you visit our login page, we will set a temporary cookie to determine if your browser
-          accepts cookies. This cookie contains no personal data and is discarded when you close
-          your browser.
-        </p>
-        <p className={styles.body}>
-          When you log in, we will also set up several cookies to save your login information and
-          your screen display choices. Login cookies last for two days, and screen options cookies
-          last for a year. If you select &ldquo;Remember Me&rdquo;, your login will persist for two weeks.
-          If you log out of your account, the login cookies will be removed.
-        </p>
-        <p className={styles.body}>
-          If you edit or publish an article, an additional cookie will be saved in your browser.
-          This cookie includes no personal data and simply indicates the post ID of the article you
-          just edited. It expires after 1 day.
+          This site uses cookies and similar tracking technologies for analytics (Google Analytics)
+          and advertising attribution. You can disable cookies in your browser settings, though
+          doing so may affect your ability to use certain features of this site.
         </p>
 
-        <h2 className={styles.sectionTitle}>Embedded Content from Other Websites</h2>
+        <h2 className={styles.sectionTitle}>SMS Communications</h2>
         <p className={styles.body}>
-          Articles on this site may include embedded content (e.g. videos, images, articles, etc.).
-          Embedded content from other websites behaves in the exact same way as if the visitor has
-          visited the other website.
-        </p>
-        <p className={styles.body}>
-          These websites may collect data about you, use cookies, embed additional third-party
-          tracking, and monitor your interaction with that embedded content, including tracking your
-          interaction with the embedded content if you have an account and are logged in to that
-          website.
+          If you checked the opt-in box on the registration form, you consent to receive text
+          message reminders from The Cash Flow Academy regarding your webinar. Message and data
+          rates may apply. Message frequency varies. Reply STOP at any time to unsubscribe.
         </p>
 
         <h2 className={styles.sectionTitle}>How Long We Retain Your Data</h2>
         <p className={styles.body}>
-          If you leave a comment, the comment and its metadata are retained indefinitely. This is so
-          we can recognize and approve any follow-up comments automatically instead of holding them
-          in a moderation queue.
-        </p>
-        <p className={styles.body}>
-          For users that register on our website (if any), we also store the personal information
-          they provide in their user profile. All users can see, edit, or delete their personal
-          information at any time (except they cannot change their username). Website administrators
-          can also see and edit that information.
+          We retain your registration information for as long as you remain an active subscriber
+          or customer of The Cash Flow Academy, or as required by law. You may request deletion
+          of your data at any time (see Your Rights below).
         </p>
 
-        <h2 className={styles.sectionTitle}>What Rights You Have Over Your Data</h2>
+        <h2 className={styles.sectionTitle}>Your Rights</h2>
         <p className={styles.body}>
-          If you have an account on this site, or have left comments, you can request to receive an
-          exported file of the personal data we hold about you, including any data you have provided
-          to us. You can also request that we erase any personal data we hold about you. This does
-          not include any data we are obliged to keep for administrative, legal, or security purposes.
-        </p>
-        <p className={styles.body}>
-          To request deletion of your account information, please contact us at{' '}
-          <a href="mailto:customerservice@thecashflowacademy.com" className={styles.link}>
-            customerservice@thecashflowacademy.com
-          </a>.
-          Your request will be fulfilled within 5–7 business days.
+          You have the right to access, correct, or request deletion of the personal information
+          we hold about you. To exercise any of these rights, please contact us at the address
+          below. We will respond within 5–7 business days.
         </p>
 
         <h2 className={styles.sectionTitle}>Contact Us</h2>

@@ -190,6 +190,17 @@ export default function CountdownTimer({
         </div>
 
         <p className={styles.dateDisplay}>{formattedDate}</p>
+
+        <button
+          type="button"
+          className={`cta-button ${styles.cta}`}
+          onClick={() => {
+            fireCtaClick(funnelSlug, 'Reserve My Spot Now', 'countdown');
+            scrollToForm(funnelSlug, 'countdown');
+          }}
+        >
+          Reserve My Spot Now →
+        </button>
       </div>
     </div>
   );

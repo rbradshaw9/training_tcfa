@@ -19,6 +19,17 @@ export const metadata: Metadata = {
 export default function ConfirmationPage() {
   return (
     <div className={styles.page}>      <ConfirmationTracker />
+      {/* ── Brand Bar ───────────────────────────────────────────────────── */}
+      <div className={styles.brandBar}>
+        <img
+          src="/images/CFA-colorlogo-whitetext.png"
+          alt="The Cash Flow Academy"
+          className={styles.brandLogo}
+          width={180}
+          height={68}
+        />
+      </div>
+
       {/* ── Header ──────────────────────────────────────────────────────── */}
       <header className={styles.header}>
         <div className={styles.badge}>✅ SEAT BOOKING CONFIRMATION</div>
