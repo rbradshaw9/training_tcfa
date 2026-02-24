@@ -28,7 +28,7 @@
   --font-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --cta-gradient-start: #e84010;
   --cta-gradient-end: #f5a623;
-  --hero-bg: linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%);
+  --hero-bg: linear-gradient(160deg, #060609 0%, #0c1828 42%, #180d02 100%);
   --urgency-bar-bg: #b71c1c;
   --urgency-bar-text: #ffffff;
 

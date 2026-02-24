@@ -55,7 +55,7 @@ const config: FunnelConfig = {
     'And So Much More!',
   ],
   heroCtaText: 'CLICK HERE TO REGISTER NOW',
-  heroBackgroundImage: '/images/andy-with-kiyosaki.png',
+  heroBackgroundImage: '',
 
   // ── Registration Form ─────────────────────────────────────────────────────
   formTitle: "DON'T MISS THIS FREE TRAINING",

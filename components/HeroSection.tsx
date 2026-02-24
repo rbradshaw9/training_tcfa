@@ -71,7 +71,8 @@ export default function HeroSection({
           : undefined
       }
     >
-      <div className={styles.overlay} aria-hidden="true" />
+      {/* Overlay only needed when a background image is set */}
+      {backgroundImage && <div className={styles.overlay} aria-hidden="true" />}
 
       <div className={`${styles.content} container`}>
         {/* Badge */}
